@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elnaz Kanani — Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#0a6b5e;--teal-light:#e8f5f3;--teal-mid:#5aada0;
+  --dark:#1a1a2e;--mid:#5a5a72;--light:#f8f7f4;--cream:#faf9f6;
+  --white:#ffffff;--accent:#c8845a;--accent-light:#fdf8f5;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--dark);line-height:1.7;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 4rem;background:rgba(250,249,246,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(10,107,94,0.1)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--teal);text-decoration:none;letter-spacing:.02em}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--mid);font-size:.85rem;font-weight:400;letter-spacing:.05em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--teal)}
+
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:8rem 4rem 4rem;gap:4rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-20%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(10,107,94,.06) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.hero-text{position:relative;z-index:2}
+.hero-eyebrow{font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);font-weight:500;margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem}
+.hero-eyebrow::before{content:'';display:block;width:32px;height:1px;background:var(--teal)}
+.hero-name{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5vw,5rem);font-weight:300;line-height:1.05;color:var(--dark);margin-bottom:1.5rem}
+.hero-name em{font-style:italic;color:var(--teal)}
+.hero-tagline{font-size:1.05rem;color:var(--mid);font-weight:300;max-width:480px;line-height:1.8;margin-bottom:2.5rem}
+.hero-cta{display:inline-flex;align-items:center;gap:.6rem;background:var(--teal);color:white;padding:.85rem 2rem;border-radius:2px;text-decoration:none;font-size:.85rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;transition:background .2s,transform .2s}
+.hero-cta:hover{background:#085048;transform:translateY(-1px)}
+.hero-visual{display:flex;flex-direction:column;gap:1.5rem;position:relative;z-index:2}
+.hero-quote{background:var(--white);border-left:3px solid var(--teal);padding:2rem 2rem 2rem 2.5rem;border-radius:0 8px 8px 0;box-shadow:0 2px 24px rgba(10,107,94,.06)}
+.hero-quote blockquote{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-style:italic;font-weight:300;color:var(--dark);line-height:1.6;margin-bottom:.75rem}
+.hero-quote cite{font-size:.8rem;color:var(--mid);letter-spacing:.05em}
+.hero-pills{display:flex;flex-wrap:wrap;gap:.6rem}
+.pill{background:var(--teal-light);color:var(--teal);padding:.4rem 1rem;border-radius:100px;font-size:.78rem;font-weight:500;letter-spacing:.03em}
+
+/* AFFIRMATION */
+.affirmation-section{background:var(--teal);padding:5rem 4rem;text-align:center;position:relative;overflow:hidden}
+.affirmation-section::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:20rem;line-height:1;color:rgba(255,255,255,.04);position:absolute;top:-4rem;left:2rem;pointer-events:none;user-select:none}
+.affirmation-eyebrow{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:1rem}
+.affirmation-card{max-width:680px;margin:0 auto;position:relative;z-index:2}
+#affirmation-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;font-style:italic;color:white;line-height:1.5;margin-bottom:2rem;min-height:5rem;transition:opacity .5s ease}
+.affirmation-btn{background:transparent;border:1px solid rgba(255,255,255,.4);color:white;padding:.75rem 2rem;border-radius:2px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:400;letter-spacing:.08em;text-transform:uppercase;transition:background .2s,border-color .2s}
+.affirmation-btn:hover{background:rgba(255,255,255,.1);border-color:white}
+.affirmation-date{margin-top:1rem;font-size:.75rem;color:rgba(255,255,255,.45);letter-spacing:.06em}
+
+/* ABOUT */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:6rem;padding:8rem 4rem;align-items:center}
+.about-text h2{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--dark);line-height:1.15;margin-bottom:1.5rem}
+.about-text h2 em{font-style:italic;color:var(--teal)}
+.about-text p{color:var(--mid);font-size:.95rem;line-height:1.85;margin-bottom:1.2rem;font-weight:300}
+.about-values{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+
+/* VALUE CARDS — clickable */
+.value-card{background:var(--white);border-radius:8px;padding:1.5rem;border:1px solid rgba(10,107,94,.1);transition:border-color .2s,transform .2s,box-shadow .2s;cursor:pointer;position:relative;overflow:hidden}
+.value-card:hover{border-color:var(--teal-mid);transform:translateY(-2px);box-shadow:0 8px 24px rgba(10,107,94,.1)}
+.value-card::after{content:'Explore →';position:absolute;bottom:.75rem;right:1rem;font-size:.7rem;color:var(--teal);opacity:0;transition:opacity .2s;letter-spacing:.05em;text-transform:uppercase}
+.value-card:hover::after{opacity:1}
+.value-icon{font-size:1.4rem;margin-bottom:.75rem}
+.value-title{font-weight:500;font-size:.9rem;color:var(--dark);margin-bottom:.4rem}
+.value-desc{font-size:.82rem;color:var(--mid);line-height:1.6}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(26,26,46,.6);z-index:200;backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:2rem}
+.modal-overlay.open{display:flex}
+.modal{background:var(--white);border-radius:16px;max-width:680px;width:100%;max-height:85vh;overflow-y:auto;position:relative;animation:modalIn .3s ease}
+@keyframes modalIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.modal-close{position:absolute;top:1.25rem;right:1.25rem;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--mid);line-height:1;padding:.25rem .5rem;border-radius:4px;transition:background .15s}
+.modal-close:hover{background:var(--light)}
+.modal-header{padding:2.5rem 2.5rem 1.5rem;border-bottom:1px solid rgba(10,107,94,.1)}
+.modal-header h3{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--dark);margin-bottom:.4rem}
+.modal-header p{font-size:.85rem;color:var(--mid)}
+.modal-body{padding:2rem 2.5rem 2.5rem}
+
+/* book grid */
+.book-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.book-card{background:var(--teal-light);border-radius:8px;padding:1.2rem 1.25rem;border-left:3px solid var(--teal)}
+.book-card.featured{grid-column:span 2;background:linear-gradient(135deg,#e8f5f3,#d4ede9);border-left:4px solid var(--teal);position:relative}
+.book-card.featured::before{content:'⭐ Elnaz\'s #1 Recommendation';font-size:.7rem;font-weight:500;color:var(--teal);letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:.5rem}
+.book-title{font-weight:500;font-size:.9rem;color:var(--dark);margin-bottom:.2rem}
+.book-author{font-size:.78rem;color:var(--teal);margin-bottom:.4rem;font-style:italic}
+.book-desc{font-size:.78rem;color:var(--mid);line-height:1.55}
+
+/* animal section */
+.animal-choices{display:flex;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.animal-btn{padding:.75rem 1.5rem;border-radius:100px;border:1.5px solid var(--teal);background:transparent;color:var(--teal);font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:500;cursor:pointer;transition:all .2s}
+.animal-btn:hover,.animal-btn.active{background:var(--teal);color:white}
+.animal-panel{display:none}
+.animal-panel.visible{display:block}
+.cute-animal-img{width:100%;border-radius:12px;max-height:380px;object-fit:cover;margin-bottom:1rem}
+.see-another-btn{background:var(--teal);color:white;border:none;padding:.7rem 1.75rem;border-radius:100px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:500;transition:background .2s;margin-bottom:.75rem}
+.see-another-btn:hover{background:#085048}
+.animal-caption{font-size:.8rem;color:var(--mid);font-style:italic}
+.help-animal-list{display:flex;flex-direction:column;gap:.85rem}
+.help-item{background:var(--teal-light);border-radius:8px;padding:1rem 1.25rem;display:flex;gap:.75rem;align-items:flex-start}
+.help-item-icon{font-size:1.1rem;flex-shrink:0;margin-top:.1rem}
+.help-item-title{font-weight:500;font-size:.88rem;color:var(--dark);margin-bottom:.2rem}
+.help-item-desc{font-size:.8rem;color:var(--mid);line-height:1.55}
+
+/* math */
+.math-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.math-card{background:var(--light);border-radius:8px;padding:1.25rem;border:1px solid rgba(10,107,94,.1)}
+.math-card-title{font-weight:500;font-size:.9rem;color:var(--dark);margin-bottom:.3rem}
+.math-card-level{font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--teal);margin-bottom:.4rem}
+.math-card-desc{font-size:.78rem;color:var(--mid);line-height:1.55;margin-bottom:.6rem}
+.math-card-link{font-size:.75rem;color:var(--teal);text-decoration:none;font-weight:500}
+.math-card-link:hover{text-decoration:underline}
+
+/* AI resources */
+.ai-resource-list{display:flex;flex-direction:column;gap:.85rem}
+.ai-resource{display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.25rem;background:var(--light);border-radius:8px;border:1px solid rgba(10,107,94,.1);text-decoration:none;transition:border-color .2s,transform .2s}
+.ai-resource:hover{border-color:var(--teal);transform:translateX(4px)}
+.ai-resource-icon{font-size:1.3rem;flex-shrink:0}
+.ai-resource-name{font-weight:500;font-size:.9rem;color:var(--dark);margin-bottom:.2rem}
+.ai-resource-desc{font-size:.78rem;color:var(--mid);line-height:1.5}
+.ai-resource-tag{display:inline-block;background:var(--teal-light);color:var(--teal);font-size:.65rem;font-weight:500;padding:.2rem .6rem;border-radius:100px;letter-spacing:.03em;margin-top:.3rem}
+
+/* INTERESTS SECTION */
+.interests{background:var(--light);padding:8rem 4rem}
+.section-header{text-align:center;margin-bottom:4rem}
+.section-eyebrow{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);margin-bottom:.75rem}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:var(--dark)}
+.section-title em{font-style:italic;color:var(--teal)}
+.interests-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1000px;margin:0 auto}
+.interest-card{background:var(--white);border-radius:12px;padding:2.5rem 2rem;text-align:center;border:1px solid rgba(10,107,94,.08);transition:transform .25s,box-shadow .25s}
+.interest-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(10,107,94,.1)}
+.interest-icon{width:56px;height:56px;border-radius:50%;background:var(--teal-light);margin:0 auto 1.25rem;display:flex;align-items:center;justify-content:center;font-size:1.5rem}
+.interest-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--dark);margin-bottom:.75rem}
+.interest-desc{font-size:.85rem;color:var(--mid);line-height:1.7}
+
+/* AI IDEA SECTION */
+.ai-idea{background:var(--dark);padding:8rem 4rem;position:relative;overflow:hidden}
+.ai-idea::before{content:'';position:absolute;top:-100px;left:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(10,107,94,.2) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.ai-idea::after{content:'';position:absolute;bottom:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(90,173,160,.1) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.ai-idea-inner{max-width:760px;margin:0 auto;position:relative;z-index:2}
+.ai-idea-eyebrow{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--teal-mid);margin-bottom:1rem}
+.ai-idea-inner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.4rem);font-weight:300;color:white;line-height:1.15;margin-bottom:1rem}
+.ai-idea-inner h2 em{font-style:italic;color:var(--teal-mid)}
+.ai-idea-inner p{color:rgba(255,255,255,.55);font-size:.95rem;line-height:1.85;margin-bottom:2.5rem;max-width:560px}
+.ai-idea-form{display:flex;flex-direction:column;gap:1rem}
+.ai-idea-form input,.ai-idea-form textarea,.ai-idea-form select{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:4px;padding:1rem 1.25rem;color:white;font-family:'DM Sans',sans-serif;font-size:.9rem;width:100%;transition:border-color .2s}
+.ai-idea-form input::placeholder,.ai-idea-form textarea::placeholder{color:rgba(255,255,255,.3)}
+.ai-idea-form input:focus,.ai-idea-form textarea:focus,.ai-idea-form select:focus{outline:none;border-color:var(--teal-mid)}
+.ai-idea-form select{color:rgba(255,255,255,.7);appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.4)' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
+.ai-idea-form select option{background:#1a1a2e;color:white}
+.ai-idea-form textarea{min-height:160px;resize:vertical}
+.ai-idea-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.ai-submit{background:var(--teal);color:white;border:none;padding:1rem 2.5rem;border-radius:2px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;transition:background .2s;align-self:flex-start}
+.ai-submit:hover{background:#085048}
+#ai-success{display:none;color:var(--teal-mid);font-size:.9rem;margin-top:.5rem;padding:1rem;background:rgba(10,107,94,.1);border-radius:4px;border:1px solid rgba(90,173,160,.3)}
+
+/* MENTAL HEALTH */
+.mental-health{padding:8rem 4rem;display:grid;grid-template-columns:2fr 1fr;gap:6rem;align-items:center;max-width:1200px;margin:0 auto}
+.mh-text h2{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:300;color:var(--dark);line-height:1.2;margin-bottom:1.5rem}
+.mh-text h2 em{font-style:italic;color:var(--accent)}
+.mh-text p{color:var(--mid);line-height:1.85;font-size:.95rem;margin-bottom:1rem}
+.mh-resources{display:flex;flex-direction:column;gap:1rem}
+.mh-resource{background:var(--accent-light);border:1px solid rgba(200,132,90,.2);border-radius:8px;padding:1.2rem 1.5rem}
+.mh-resource-name{font-weight:500;font-size:.9rem;color:var(--dark);margin-bottom:.2rem}
+.mh-resource-desc{font-size:.8rem;color:var(--mid)}
+
+/* CONTACT */
+.contact{background:var(--cream);padding:8rem 4rem;text-align:center}
+.contact h2{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--dark);margin-bottom:1rem}
+.contact h2 em{font-style:italic;color:var(--teal)}
+.contact > p{color:var(--mid);margin-bottom:3rem;font-size:.95rem}
+.contact-form{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:1rem}
+.contact-form input,.contact-form textarea{background:var(--white);border:1px solid rgba(10,107,94,.15);border-radius:4px;padding:1rem 1.25rem;color:var(--dark);font-family:'DM Sans',sans-serif;font-size:.9rem;width:100%;transition:border-color .2s}
+.contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--teal)}
+.contact-form textarea{min-height:140px;resize:vertical}
+.contact-form button{background:var(--teal);color:white;border:none;padding:1rem 2.5rem;border-radius:2px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;transition:background .2s;align-self:center}
+.contact-form button:hover{background:#085048}
+#form-success{display:none;color:var(--teal);font-size:.9rem;margin-top:1rem}
+
+footer{background:#111120;padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center}
+footer p{font-size:.78rem;color:rgba(255,255,255,.3)}
+.footer-heart{color:var(--teal-mid)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.hero-text>*{animation:fadeUp .7s ease both}
+.hero-eyebrow{animation-delay:.1s}.hero-name{animation-delay:.25s}.hero-tagline{animation-delay:.4s}.hero-cta{animation-delay:.55s}
+.hero-visual{animation:fadeUp .7s .5s ease both}
+
+@media(max-width:900px){
+  nav{padding:1rem 2rem}.nav-links{display:none}
+  .hero{grid-template-columns:1fr;padding:6rem 2rem 3rem}
+  .about{grid-template-columns:1fr;padding:4rem 2rem;gap:3rem}
+  .about-values{grid-template-columns:1fr}
+  .interests{padding:4rem 2rem}.interests-grid{grid-template-columns:1fr}
+  .mental-health{grid-template-columns:1fr;padding:4rem 2rem;gap:2rem}
+  .contact{padding:4rem 2rem}.affirmation-section{padding:4rem 2rem}
+  .ai-idea{padding:4rem 2rem}.ai-idea-row{grid-template-columns:1fr}
+  .book-grid{grid-template-columns:1fr}.book-card.featured{grid-column:span 1}
+  .math-grid{grid-template-columns:1fr}
+  footer{flex-direction:column;gap:.5rem;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Elnaz Kanani</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#affirmation">Affirmation</a></li>
+    <li><a href="#ai-idea">Share an AI Idea</a></li>
+    <li><a href="#wellbeing">Wellbeing</a></li>
+    <li><a href="#contact">Say Hello</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Ottawa, Canada</div>
+    <h1 class="hero-name">Elnaz<br><em>Kanani</em></h1>
+    <p class="hero-tagline">AI geek. Mathematician at heart. Lifelong learner. Lover of books, animals, and the quiet magic of a good idea. Proud Canadian by choice.</p>
+    <a class="hero-cta" href="#contact">Say hello ↓</a>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-quote">
+      <blockquote>"Canada didn't just give me an education. It gave me a home, a purpose, and a chosen family."</blockquote>
+      <cite>— Elnaz, on arriving in Montreal alone in 2010</cite>
+    </div>
+    <div class="hero-pills">
+      <span class="pill">AI & Machine Learning</span>
+      <span class="pill">Mathematics</span>
+      <span class="pill">HEC Montréal Graduate</span>
+      <span class="pill">Deloitte Canada</span>
+      <span class="pill">Lifelong Learning</span>
+      <span class="pill">Mental Health Advocate</span>
+      <span class="pill">Animal Lover</span>
+      <span class="pill">Avid Reader</span>
+      <span class="pill">Rock Climber</span>
+      <span class="pill">Culinary Explorer</span>
+      <span class="pill">Stoic</span>
+      <span class="pill">uOttawa Faculty</span>
+    </div>
+  </div>
+</section>
+
+<!-- AFFIRMATION -->
+<section class="affirmation-section" id="affirmation">
+  <div class="affirmation-card">
+    <p class="affirmation-eyebrow">Your daily affirmation</p>
+    <p id="affirmation-text">Loading today's affirmation...</p>
+    <button class="affirmation-btn" onclick="newAffirmation()">Give me another one</button>
+    <p class="affirmation-date" id="affirmation-date"></p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-text">
+    <h2>A mathematician who fell in love with <em>possibility</em></h2>
+    <p>I arrived in Canada in August 2010 — alone, an international student from Iran stepping into Montreal knowing no one. I was lost in the truest sense. But Canada, with characteristic quiet generosity, helped me find my way.</p>
+    <p>A Government of Canada scholarship brought me here for my doctorate. When I received it, something shifted. I felt indebted — not out of obligation, but out of love. That feeling has never left me.</p>
+    <p>At my core I am a mathematician — I see the world through patterns, structures, and the elegant logic that connects things. AI, to me, is just the most exciting application of that lens. I am genuinely, unabashedly, a geek about it.</p>
+    <p>Canada is my home. The moment I knew it truly was when I saw Canadians using an AI solution I had built to do their work better. That image stays with me. It always will.</p>
+  </div>
+  <div class="about-values">
+    <div class="value-card" onclick="openModal('math')">
+      <div class="value-icon">🧮</div>
+      <div class="value-title">Mathematics</div>
+      <div class="value-desc">Patterns, proofs, and the beauty of elegant logic. It's how I see the world.</div>
+    </div>
+    <div class="value-card" onclick="openModal('ai')">
+      <div class="value-icon">🤖</div>
+      <div class="value-title">AI Geek</div>
+      <div class="value-desc">Genuinely obsessed. Building, teaching, thinking, dreaming about it.</div>
+    </div>
+    <div class="value-card" onclick="openModal('books')">
+      <div class="value-icon">📚</div>
+      <div class="value-title">Books</div>
+      <div class="value-desc">Imagination and learning living in the same place. Always reading.</div>
+    </div>
+    <div class="value-card" onclick="openModal('animals')">
+      <div class="value-icon">🐾</div>
+      <div class="value-title">Animal Lover</div>
+      <div class="value-desc">Animals are the definition of innocence. I love them without reservation.</div>
+    </div>
+  </div>
+</section>
+
+<!-- MODALS -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModalOutside(event)">
+  <div class="modal" id="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-header">
+      <h3 id="modal-title"></h3>
+      <p id="modal-subtitle"></p>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<!-- INTERESTS -->
+<section class="interests" id="interests">
+  <div class="section-header">
+    <p class="section-eyebrow">What fills my world</p>
+    <h2 class="section-title">Things I love <em>deeply</em></h2>
+  </div>
+  <div class="interests-grid">
+    <div class="interest-card">
+      <div class="interest-icon">🤝</div>
+      <h3 class="interest-title">Giving Back</h3>
+      <p class="interest-desc">I believe empathy is not a soft skill — it is the only path to survival for humanity in a world that is moving faster than our wisdom can keep up with. Kindness, compassion, and the willingness to show up for others are what separate a civilization from a competition. I give back in whatever form I can — supporting newcomers finding their footing, lifting up those going through hard seasons, and showing up wherever someone needs a hand. Not out of obligation. Out of the conviction that a good heart, practised daily, is the most important thing any of us can contribute.</p>
+    </div>
+    <div class="interest-card">
+      <div class="interest-icon">🎓</div>
+      <h3 class="interest-title">Schools & Learning</h3>
+      <p class="interest-desc">I believe investing in schools and universities is the single most important thing we can do for our future. I also believe the gap between academia and industry must close — urgently. Knowledge without application stalls. Practice without theory drifts. I give back in every way I can: teaching, research, mentorship, and showing up wherever both worlds can meet.</p>
+    </div>
+    <div class="interest-card">
+      <div class="interest-icon">🍁</div>
+      <h3 class="interest-title">This Country</h3>
+      <p class="interest-desc">I was not born here. But Canada is my home in every way that matters. I chose it, and it chose me back. Skating on the Rideau Canal on a bitter January morning. The way Ottawa explodes into colour every autumn — reds and golds so vivid they seem impossible. The brief, triumphant arrival of spring after months of cold, when suddenly everyone is outside and smiling at strangers. The long, generous light of Canadian summers. The kindness on the street, in every season. This country has a warmth that runs deeper than its winters. I carry it with me everywhere I go.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AI IDEA SECTION -->
+<section class="ai-idea" id="ai-idea">
+  <div class="ai-idea-inner">
+    <p class="ai-idea-eyebrow">Got a spark?</p>
+    <h2>Do you have an <em>AI idea</em>?</h2>
+    <p>A problem that could be solved with AI. Something you want to bring to life. A process that feels broken and you wonder if technology could fix it. A dream that just needs the right mind to help make it real. Let's talk.</p>
+    <form class="ai-idea-form" onsubmit="handleIdeaSubmit(event)">
+      <div class="ai-idea-row">
+        <input type="text" placeholder="Your name" required />
+        <input type="email" placeholder="Your email" required />
+      </div>
+      <select>
+        <option value="" disabled selected>What best describes your idea?</option>
+        <option>Automating a repetitive process</option>
+        <option>Making sense of large amounts of data</option>
+        <option>Building something that doesn't exist yet</option>
+        <option>Improving how people work or collaborate</option>
+        <option>Solving a social or community problem</option>
+        <option>Something else entirely</option>
+      </select>
+      <textarea placeholder="Tell me about your idea — don't worry about it being polished. What's the problem? What would success look like? What have you already tried?" required></textarea>
+      <button type="submit" class="ai-submit">Share your idea →</button>
+      <div id="ai-success">✓ Thank you for sharing — I love hearing ideas like this. I'll be in touch soon.</div>
+    </form>
+  </div>
+</section>
+
+<!-- MENTAL HEALTH -->
+<section id="wellbeing">
+  <div class="mental-health">
+    <div class="mh-text">
+      <h2>Mental health matters. <em>Always.</em></h2>
+      <p>I believe that taking care of your mind is not a luxury — it is the foundation of everything else. You cannot build anything meaningful, love anyone fully, or contribute to the world around you if you are running on empty.</p>
+      <p>Life can be hard. Some seasons are harder than others. And the most courageous thing a person can do is reach out when they need support. There is no weakness in that — only wisdom.</p>
+      <p>If you or someone you love is struggling, please know that help exists and you deserve it.</p>
+    </div>
+    <div class="mh-resources">
+      <div class="mh-resource"><div class="mh-resource-name">Crisis Services Canada</div><div class="mh-resource-desc">1-833-456-4566 · Available 24/7</div></div>
+      <div class="mh-resource"><div class="mh-resource-name">Kids Help Phone</div><div class="mh-resource-desc">Text HOME to 686868 · Ages up to 29</div></div>
+      <div class="mh-resource"><div class="mh-resource-name">CAMH</div><div class="mh-resource-desc">camh.ca · Resources & support</div></div>
+      <div class="mh-resource"><div class="mh-resource-name">OCISO Ottawa</div><div class="mh-resource-desc">Support for newcomers & immigrants</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <h2>Let's <em>connect</em></h2>
+  <p>I'd love to hear from you — whether you want to talk about AI, books, or anything in between.</p>
+  <form class="contact-form" onsubmit="handleSubmit(event)">
+    <input type="text" placeholder="Your name" required />
+    <input type="email" placeholder="Your email" required />
+    <textarea placeholder="What's on your mind?"></textarea>
+    <button type="submit">Send a message →</button>
+    <p id="form-success">✓ Thank you for reaching out. I'll be in touch soon.</p>
+  </form>
+</section>
+
+<footer>
+  <p>© 2026 Elnaz Kanani · Ottawa, Canada</p>
+  <p>Made with <span class="footer-heart">♥</span> for this country and its people</p>
+</footer>
+
+<script>
+/* ---- AFFIRMATIONS ---- */
+const affirmations = [
+  "You are exactly where you need to be. Trust the process.",
+  "Your uniqueness is not a flaw — it is your greatest gift to the world.",
+  "You have survived every difficult day so far. Today is no different.",
+  "Rest is not giving up. Rest is how you prepare to rise.",
+  "You don't have to have it all figured out. Moving forward is enough.",
+  "The life you want is built one small, brave choice at a time.",
+  "You are allowed to take up space — in rooms, in conversations, in the world.",
+  "Your presence matters more than your productivity.",
+  "Asking for help is not weakness. It is how the strongest people grow.",
+  "You are doing better than you think. Give yourself credit.",
+  "Kindness to yourself is not selfish. It is the foundation of everything.",
+  "You belong here. In this room, in this country, in this life.",
+  "Your story is still being written. The best chapters are ahead.",
+  "Growth is not always visible. Trust what is happening beneath the surface.",
+  "You were made for more than you can currently imagine.",
+  "It is okay to not be okay — and it is okay to ask for the hand that helps you back up.",
+  "Every expert was once a beginner who refused to quit.",
+  "Your compassion for others is a superpower. Don't let the world harden it.",
+  "You are not behind. You are on your own timeline, and it is the right one.",
+  "The fact that you keep trying is already extraordinary.",
+  "Courage is not the absence of fear — it is deciding that something matters more.",
+  "You have so much more strength than you've needed to use yet.",
+  "Being a work in progress is not something to apologize for. It is something to celebrate.",
+  "Your mind is brilliant. Your heart is big. That combination changes things.",
+  "Some of the most beautiful things in the world grew in unexpected soil.",
+  "You are not your worst day, your hardest season, or your lowest moment.",
+  "The world is genuinely better with you in it.",
+  "It takes courage to be soft in a world that rewards hardness. Stay soft.",
+  "Learning is never wasted. Every book, every mistake, every question — it all compounds.",
+  "You are allowed to want more, dream bigger, and begin again."
+];
+let lastAff = '';
+function getDailyAffirmation(){const t=new Date,d=Math.floor((t-new Date(t.getFullYear(),0,0))/864e5);return affirmations[d%affirmations.length]}
+function newAffirmation(){const el=document.getElementById('affirmation-text');el.style.opacity='0';setTimeout(()=>{const r=affirmations.filter(a=>a!==lastAff);const p=r[Math.floor(Math.random()*r.length)];el.textContent=p;lastAff=p;el.style.opacity='1'},400)}
+function setDate(){const d=new Date;document.getElementById('affirmation-date').textContent=d.toLocaleDateString('en-CA',{weekday:'long',year:'numeric',month:'long',day:'numeric'})}
+
+/* ---- MODAL CONTENT ---- */
+const modalContent = {
+  books: {
+    title: '📚 Books I love & recommend',
+    subtitle: 'These books have shaped how I think about the world.',
+    body: `<div class="book-grid">
+      <div class="book-card featured">
+        <div class="book-title">The Little Prince</div>
+        <div class="book-author">Antoine de Saint-Exupéry</div>
+        <div class="book-desc">My favourite book on the planet. I recommend it to everyone, always. It is a children's book that contains everything an adult needs to know about what matters in life. Read it once a year.</div>
+      </div>
+      <div class="book-card">
+        <div class="book-title">Pride and Prejudice</div>
+        <div class="book-author">Jane Austen</div>
+        <div class="book-desc">Wit, intelligence, and the courage to be honest. Austen understood human nature better than almost anyone. Start here, then read everything she wrote.</div>
+      </div>
+      <div class="book-card">
+        <div class="book-title">The Consolations of Philosophy</div>
+        <div class="book-author">Alain de Botton</div>
+        <div class="book-desc">Philosophy made warm, practical, and deeply human. De Botton has a gift for making ancient wisdom feel like it was written for today.</div>
+      </div>
+      <div class="book-card">
+        <div class="book-title">The Masnavi / Selected Poems</div>
+        <div class="book-author">Rumi</div>
+        <div class="book-desc">Seven centuries old and still startlingly alive. Rumi writes about longing, belonging, and the search for meaning with an honesty that reaches across all time.</div>
+      </div>
+      <div class="book-card">
+        <div class="book-title">Hôtel des deux mondes</div>
+        <div class="book-author">Éric-Emmanuel Schmitt</div>
+        <div class="book-desc">A metaphysical play set in a mysterious hotel suspended between life and death. Six strangers — none knowing how they arrived or when they will leave — are forced to confront what their lives have meant. Haunting, philosophical, and quietly hopeful. One of the most original theatrical works of our time.</div>
+      </div>
+      <div class="book-card">
+        <div class="book-title">The Picture of Dorian Gray</div>
+        <div class="book-author">Oscar Wilde</div>
+        <div class="book-desc">Wilde's only novel, and what a novel it is. Beautiful, dark, and full of aphorisms you'll want to write on walls. On vanity, beauty, and the price of a life unlived honestly.</div>
+      </div>
+      <div class="book-card">
+        <div class="book-title">Madame Bovary</div>
+        <div class="book-author">Gustave Flaubert</div>
+        <div class="book-desc">One of the most precisely written novels ever made. Flaubert said every sentence should be felt in the bones. He was right. A masterclass in both craft and consequence.</div>
+      </div>
+    </div>`
+  },
+  animals: {
+    title: '🐾 Animals — the definition of innocence',
+    subtitle: 'Choose what you\'d like to explore.',
+    body: `<div class="animal-choices">
+      <button class="animal-btn active" onclick="showAnimalPanel('cute', this)">🐶 Show me cute animals</button>
+      <button class="animal-btn" onclick="showAnimalPanel('help', this)">🌿 How can I help animals?</button>
+    </div>
+    <div class="animal-panel visible" id="panel-cute">
+      <img class="cute-animal-img" id="cute-img" src="" alt="A cute animal" />
+      <br>
+      <button class="see-another-btn" onclick="nextAnimal()">See another one 🐾</button>
+      <p class="animal-caption" id="animal-caption"></p>
+    </div>
+    <div class="animal-panel" id="panel-help">
+      <div class="help-animal-list">
+        <div class="help-item"><div class="help-item-icon">🏠</div><div><div class="help-item-title">Adopt, don't shop</div><div class="help-item-desc">Millions of animals in shelters need homes. Visit your local SPCA or humane society before considering a breeder. Every adoption saves two lives.</div></div></div>
+        <div class="help-item"><div class="help-item-icon">🌱</div><div><div class="help-item-title">Reduce your meat consumption</div><div class="help-item-desc">You don't have to go fully plant-based. Even reducing meat a few days a week meaningfully reduces animal suffering and environmental impact. Start small.</div></div></div>
+        <div class="help-item"><div class="help-item-icon">💧</div><div><div class="help-item-title">Put out water for wildlife</div><div class="help-item-desc">A shallow dish of fresh water in your yard or balcony can save birds, squirrels, and insects — especially in summer heat. The smallest act matters.</div></div></div>
+        <div class="help-item"><div class="help-item-icon">🪟</div><div><div class="help-item-title">Make your windows bird-safe</div><div class="help-item-desc">Billions of birds die from window collisions annually. Simple window decals or tape strips can prevent this. It takes minutes and saves lives.</div></div></div>
+        <div class="help-item"><div class="help-item-icon">🤝</div><div><div class="help-item-title">Volunteer or foster</div><div class="help-item-desc">Local shelters are always in need of volunteers and foster homes. Fostering a pet temporarily saves their life and helps them become adoptable. Contact your local SPCA.</div></div></div>
+        <div class="help-item"><div class="help-item-icon">🧴</div><div><div class="help-item-title">Choose cruelty-free products</div><div class="help-item-desc">Look for the Leaping Bunny or PETA certified logo on cosmetics and household products. It's a simple swap with real impact.</div></div></div>
+        <div class="help-item"><div class="help-item-icon">🌍</div><div><div class="help-item-title">Support wildlife habitat</div><div class="help-item-desc">Donate to or volunteer with organizations like the WWF Canada, Wildlife Conservation Society, or your local land trust. Protecting habitat is the highest-leverage action for wild animals.</div></div></div>
+      </div>
+    </div>`
+  },
+  math: {
+    title: '🧮 Mathematics — where logic becomes beautiful',
+    subtitle: 'Subjects I love and where to start learning them.',
+    body: `<div class="math-grid">
+      <div class="math-card">
+        <div class="math-card-level">Foundation · Everyone</div>
+        <div class="math-card-title">Linear Algebra</div>
+        <div class="math-card-desc">The language of AI. Vectors, matrices, transformations — this is the mathematical backbone of machine learning. If you want to understand AI deeply, start here.</div>
+        <a class="math-card-link" href="https://www.khanacademy.org/math/linear-algebra" target="_blank">→ Khan Academy (free)</a>
+      </div>
+      <div class="math-card">
+        <div class="math-card-level">Foundation · Everyone</div>
+        <div class="math-card-title">Statistics & Probability</div>
+        <div class="math-card-desc">The art of reasoning under uncertainty. From A/B tests to AI model evaluation, statistics is one of the most practically powerful things you can learn.</div>
+        <a class="math-card-link" href="https://www.coursera.org/specializations/statistics" target="_blank">→ Coursera Statistics Specialization</a>
+      </div>
+      <div class="math-card">
+        <div class="math-card-level">Intermediate · For strategists</div>
+        <div class="math-card-title">Game Theory</div>
+        <div class="math-card-desc">My PhD field. The mathematics of strategic decision-making — how rational agents interact, compete, and cooperate. Endlessly fascinating and deeply applicable to business, policy, and AI.</div>
+        <a class="math-card-link" href="https://www.coursera.org/learn/game-theory-1" target="_blank">→ Stanford Game Theory (Coursera)</a>
+      </div>
+      <div class="math-card">
+        <div class="math-card-level">Intermediate · For builders</div>
+        <div class="math-card-title">Dynamic Programming</div>
+        <div class="math-card-desc">How to solve complex problems by breaking them into simpler overlapping subproblems. Central to optimization and reinforcement learning. Elegant once it clicks.</div>
+        <a class="math-card-link" href="https://www.youtube.com/watch?v=oBt53YbR9Kk" target="_blank">→ MIT OpenCourseWare (free)</a>
+      </div>
+      <div class="math-card">
+        <div class="math-card-level">Intermediate · For data lovers</div>
+        <div class="math-card-title">Optimization</div>
+        <div class="math-card-desc">The mathematics of finding the best solution. Gradient descent, convex optimization — this is what training a neural network actually is, under the hood.</div>
+        <a class="math-card-link" href="https://ocw.mit.edu/courses/6-079-introduction-to-convex-optimization-fall-2009/" target="_blank">→ MIT Convex Optimization (free)</a>
+      </div>
+      <div class="math-card">
+        <div class="math-card-level">Advanced · For the curious</div>
+        <div class="math-card-title">Stochastic Processes</div>
+        <div class="math-card-desc">How to model systems that evolve randomly over time. Markov chains, Brownian motion, queuing theory. Essential for financial modelling, AI, and systems design.</div>
+        <a class="math-card-link" href="https://www.edx.org/learn/probability" target="_blank">→ edX Probability & Stochastics</a>
+      </div>
+    </div>`
+  },
+  ai: {
+    title: '🤖 AI — where I live and breathe',
+    subtitle: 'The best places to start learning, no matter where you are.',
+    body: `<div class="ai-resource-list">
+      <a class="ai-resource" href="https://www.deeplearning.ai" target="_blank">
+        <div class="ai-resource-icon">🎓</div>
+        <div><div class="ai-resource-name">DeepLearning.AI</div><div class="ai-resource-desc">Andrew Ng's platform — the gold standard for learning AI and ML. Start with the Machine Learning Specialization. Free to audit.</div><span class="ai-resource-tag">Beginner → Advanced</span></div>
+      </a>
+      <a class="ai-resource" href="https://www.fast.ai" target="_blank">
+        <div class="ai-resource-icon">⚡</div>
+        <div><div class="ai-resource-name">fast.ai</div><div class="ai-resource-desc">Practical deep learning for coders. Top-down approach that gets you building real things fast. Completely free and one of the most loved AI courses on the internet.</div><span class="ai-resource-tag">Practical · Hands-on</span></div>
+      </a>
+      <a class="ai-resource" href="https://www.kaggle.com/learn" target="_blank">
+        <div class="ai-resource-icon">🏆</div>
+        <div><div class="ai-resource-name">Kaggle Learn</div><div class="ai-resource-desc">Free micro-courses on Python, ML, deep learning, and more. Then compete on real datasets. This is where many data scientists got their start.</div><span class="ai-resource-tag">Free · Community</span></div>
+      </a>
+      <a class="ai-resource" href="https://huggingface.co/learn" target="_blank">
+        <div class="ai-resource-icon">🤗</div>
+        <div><div class="ai-resource-name">Hugging Face</div><div class="ai-resource-desc">The home of open-source AI. Their free NLP and transformers course is the best way to understand how modern language models actually work.</div><span class="ai-resource-tag">Generative AI · LLMs</span></div>
+      </a>
+      <a class="ai-resource" href="https://www.elementsofai.com" target="_blank">
+        <div class="ai-resource-icon">🌐</div>
+        <div><div class="ai-resource-name">Elements of AI</div><div class="ai-resource-desc">Created by the University of Helsinki. A beautiful, accessible introduction to AI concepts with no coding required. Perfect first step for anyone curious but not technical.</div><span class="ai-resource-tag">No coding required</span></div>
+      </a>
+      <a class="ai-resource" href="https://www.youtube.com/@3blue1brown" target="_blank">
+        <div class="ai-resource-icon">🎥</div>
+        <div><div class="ai-resource-name">3Blue1Brown (YouTube)</div><div class="ai-resource-desc">The most beautiful math and AI visualizations on the internet. His neural network series will make you feel like you actually understand what's happening inside a model.</div><span class="ai-resource-tag">Visual · Intuitive</span></div>
+      </a>
+      <a class="ai-resource" href="https://arxiv.org/list/cs.AI/recent" target="_blank">
+        <div class="ai-resource-icon">📄</div>
+        <div><div class="ai-resource-name">arXiv — AI Papers</div><div class="ai-resource-desc">Where all the real AI research lives. Once you're comfortable with the basics, reading papers is how you stay at the frontier. Start with the most cited recent papers.</div><span class="ai-resource-tag">Research · Advanced</span></div>
+      </a>
+    </div>`
+  }
+};
+
+function openModal(key){
+  const c=modalContent[key];
+  document.getElementById('modal-title').textContent=c.title;
+  document.getElementById('modal-subtitle').textContent=c.subtitle;
+  document.getElementById('modal-body').innerHTML=c.body;
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+  if(key==='animals') initAnimals();
+}
+function closeModal(){document.getElementById('modal-overlay').classList.remove('open');document.body.style.overflow=''}
+function closeModalOutside(e){if(e.target===document.getElementById('modal-overlay'))closeModal()}
+function showAnimalPanel(id,btn){
+  document.querySelectorAll('.animal-panel').forEach(p=>p.classList.remove('visible'));
+  document.getElementById('panel-'+id).classList.add('visible');
+  document.querySelectorAll('.animal-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+/* cute animals using public Unsplash source URLs */
+const animals = [
+  {url:'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=700&auto=format&fit=crop',cap:'A golden retriever who has absolutely no idea how cute they are.'},
+  {url:'https://images.unsplash.com/photo-1518791841217-8f162f1912da?w=700&auto=format&fit=crop',cap:'This cat is judging your life choices. Lovingly.'},
+  {url:'https://images.unsplash.com/photo-1474511320723-9a56873867b5?w=700&auto=format&fit=crop',cap:'A fox, proving that nature is a better designer than anyone.'},
+  {url:'https://images.unsplash.com/photo-1425082661705-1834bfd08ddf?w=700&auto=format&fit=crop',cap:'A hedgehog who has somewhere important to be.'},
+  {url:'https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?w=700&auto=format&fit=crop',cap:'This sea turtle has been around longer than most ideas we call "new."'},
+  {url:'https://images.unsplash.com/photo-1589656966895-2f33e7653819?w=700&auto=format&fit=crop',cap:'A polar bear cub experiencing snow for the very first time.'},
+  {url:'https://images.unsplash.com/photo-1474511320723-9a56873867b5?w=700&auto=format&fit=crop',cap:'Pure innocence. That\'s all.'},
+];
+let animalIdx = 0;
+function initAnimals(){animalIdx=Math.floor(Math.random()*animals.length);setAnimal()}
+function nextAnimal(){animalIdx=(animalIdx+1)%animals.length;setAnimal()}
+function setAnimal(){const a=animals[animalIdx];document.getElementById('cute-img').src=a.url;document.getElementById('animal-caption').textContent=a.cap}
+
+/* FORMS */
+function handleSubmit(e){e.preventDefault();document.getElementById('form-success').style.display='block';e.target.reset()}
+function handleIdeaSubmit(e){e.preventDefault();document.getElementById('ai-success').style.display='block';e.target.reset()}
+
+/* INIT */
+window.addEventListener('load',()=>{
+  const d=getDailyAffirmation();
+  const el=document.getElementById('affirmation-text');
+  el.textContent=d; lastAff=d; setDate();
+});
+
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+</script>
+</body>
+</html>
