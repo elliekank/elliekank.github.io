@@ -329,12 +329,12 @@ footer p{font-size:.78rem;color:rgba(255,255,255,.3)}
     <p class="ai-idea-eyebrow">Got a spark?</p>
     <h2>Do you have an <em>AI idea</em>?</h2>
     <p>A problem that could be solved with AI. Something you want to bring to life. A process that feels broken and you wonder if technology could fix it. A dream that just needs the right mind to help make it real. Let's talk.</p>
-    <form class="ai-idea-form" onsubmit="handleIdeaSubmit(event)">
+    <form class="ai-idea-form" action="https://formspree.io/f/mykokjno" method="POST" onsubmit="handleIdeaSubmit(event)">
       <div class="ai-idea-row">
-        <input type="text" placeholder="Your name" required />
-        <input type="email" placeholder="Your email" required />
+        <input type="text" name="name" placeholder="Your name" required />
+        <input type="email" name="email" placeholder="Your email" required />
       </div>
-      <select>
+      <select name="idea_type">
         <option value="" disabled selected>What best describes your idea?</option>
         <option>Automating a repetitive process</option>
         <option>Making sense of large amounts of data</option>
@@ -343,7 +343,7 @@ footer p{font-size:.78rem;color:rgba(255,255,255,.3)}
         <option>Solving a social or community problem</option>
         <option>Something else entirely</option>
       </select>
-      <textarea placeholder="Tell me about your idea — don't worry about it being polished. What's the problem? What would success look like? What have you already tried?" required></textarea>
+      <textarea name="message" placeholder="Tell me about your idea — don't worry about it being polished. What's the problem? What would success look like? What have you already tried?" required></textarea>
       <button type="submit" class="ai-submit">Share your idea →</button>
       <div id="ai-success">✓ Thank you for sharing — I love hearing ideas like this. I'll be in touch soon.</div>
     </form>
@@ -372,10 +372,10 @@ footer p{font-size:.78rem;color:rgba(255,255,255,.3)}
 <section class="contact" id="contact">
   <h2>Let's <em>connect</em></h2>
   <p>I'd love to hear from you — whether you want to talk about AI, books, or anything in between.</p>
-  <form class="contact-form" onsubmit="handleSubmit(event)">
-    <input type="text" placeholder="Your name" required />
-    <input type="email" placeholder="Your email" required />
-    <textarea placeholder="What's on your mind?"></textarea>
+  <form class="contact-form" action="https://formspree.io/f/mykokjno" method="POST" onsubmit="handleSubmit(event)">
+    <input type="text" name="name" placeholder="Your name" required />
+    <input type="email" name="email" placeholder="Your email" required />
+    <textarea name="message" placeholder="What's on your mind?"></textarea>
     <button type="submit">Send a message →</button>
     <p id="form-success">✓ Thank you for reaching out. I'll be in touch soon.</p>
   </form>
@@ -605,8 +605,26 @@ function nextAnimal(){animalIdx=(animalIdx+1)%animals.length;setAnimal()}
 function setAnimal(){const a=animals[animalIdx];document.getElementById('cute-img').src=a.url;document.getElementById('animal-caption').textContent=a.cap}
 
 /* FORMS */
-function handleSubmit(e){e.preventDefault();document.getElementById('form-success').style.display='block';e.target.reset()}
-function handleIdeaSubmit(e){e.preventDefault();document.getElementById('ai-success').style.display='block';e.target.reset()}
+async function handleSubmit(e){
+  e.preventDefault();
+  const form=e.target;
+  const data=new FormData(form);
+  try{
+    const r=await fetch('https://formspree.io/f/mykokjno',{method:'POST',body:data,headers:{Accept:'application/json'}});
+    if(r.ok){document.getElementById('form-success').style.display='block';form.reset();}
+    else{alert('Something went wrong. Please try again.');}
+  }catch(err){alert('Something went wrong. Please try again.');}
+}
+async function handleIdeaSubmit(e){
+  e.preventDefault();
+  const form=e.target;
+  const data=new FormData(form);
+  try{
+    const r=await fetch('https://formspree.io/f/mykokjno',{method:'POST',body:data,headers:{Accept:'application/json'}});
+    if(r.ok){document.getElementById('ai-success').style.display='block';form.reset();}
+    else{alert('Something went wrong. Please try again.');}
+  }catch(err){alert('Something went wrong. Please try again.');}
+}
 
 /* INIT */
 window.addEventListener('load',()=>{
