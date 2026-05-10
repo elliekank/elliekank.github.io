@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Corner — Elnaz Kanani</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#0a6b5e;--teal-light:#e8f5f3;--teal-mid:#5aada0;
+  --dark:#1a1a2e;--mid:#5a5a72;--light:#f8f7f4;--cream:#faf9f6;
+  --white:#ffffff;--accent:#c8845a;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--dark);line-height:1.7;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 4rem;background:rgba(250,249,246,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(10,107,94,0.1)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--teal);text-decoration:none;letter-spacing:.02em}
+.nav-back{text-decoration:none;color:var(--mid);font-size:.85rem;font-weight:400;letter-spacing:.05em;text-transform:uppercase;transition:color .2s;display:flex;align-items:center;gap:.5rem}
+.nav-back:hover{color:var(--teal)}
+
+/* HERO */
+.hero{padding:10rem 4rem 5rem;max-width:900px;margin:0 auto;text-align:center}
+.hero-eyebrow{font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);font-weight:500;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:center;gap:.75rem}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';display:block;width:32px;height:1px;background:var(--teal)}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:300;line-height:1.05;color:var(--dark);margin-bottom:1.5rem}
+.hero h1 em{font-style:italic;color:var(--teal)}
+.hero p{font-size:1.05rem;color:var(--mid);max-width:580px;margin:0 auto 3rem;line-height:1.85;font-weight:300}
+
+/* FILTERS */
+.filters{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:1rem}
+.filter-btn{padding:.5rem 1.25rem;border-radius:100px;border:1.5px solid rgba(10,107,94,.2);background:transparent;color:var(--mid);font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:500;cursor:pointer;transition:all .2s;letter-spacing:.03em}
+.filter-btn:hover{border-color:var(--teal);color:var(--teal)}
+.filter-btn.active{background:var(--teal);color:white;border-color:var(--teal)}
+
+/* WRITINGS GRID */
+.writings{max-width:1100px;margin:0 auto;padding:2rem 4rem 8rem;display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
+
+.writing-card{background:var(--white);border-radius:12px;border:1px solid rgba(10,107,94,.08);overflow:hidden;transition:transform .25s,box-shadow .25s;cursor:pointer;display:flex;flex-direction:column}
+.writing-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(10,107,94,.1)}
+.writing-card-body{padding:2rem;flex:1}
+.writing-tag{display:inline-block;background:var(--teal-light);color:var(--teal);font-size:.7rem;font-weight:500;padding:.25rem .75rem;border-radius:100px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:1rem}
+.writing-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:400;color:var(--dark);line-height:1.2;margin-bottom:1rem}
+.writing-excerpt{font-size:.85rem;color:var(--mid);line-height:1.75;font-weight:300}
+.writing-card-footer{padding:1rem 2rem;border-top:1px solid rgba(10,107,94,.06);display:flex;justify-content:space-between;align-items:center}
+.writing-read{font-size:.78rem;color:var(--teal);font-weight:500;letter-spacing:.05em;text-transform:uppercase}
+.writing-icon{font-size:1.1rem}
+
+/* TAG COLORS */
+.tag-lessons{background:#fef3e8;color:#b85c00}
+.tag-journey{background:#e8f0fe;color:#2d5be3}
+.tag-ai{background:#f0e8fe;color:#6b2de3}
+.tag-know{background:#e8fef0;color:#0a6b3a}
+.tag-human{background:#fee8e8;color:#b82d2d}
+
+/* MODAL / FULL READING VIEW */
+.reading-overlay{display:none;position:fixed;inset:0;background:rgba(26,26,46,.7);z-index:200;backdrop-filter:blur(6px);align-items:flex-start;justify-content:center;padding:2rem;overflow-y:auto}
+.reading-overlay.open{display:flex}
+.reading-modal{background:var(--cream);border-radius:16px;max-width:720px;width:100%;margin:auto;padding:4rem;position:relative;animation:modalIn .3s ease}
+@keyframes modalIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.reading-close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--mid);padding:.25rem .5rem;border-radius:4px;transition:background .15s}
+.reading-close:hover{background:var(--light)}
+.reading-tag{display:inline-block;font-size:.7rem;font-weight:500;padding:.25rem .75rem;border-radius:100px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:1.5rem}
+.reading-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;color:var(--dark);line-height:1.1;margin-bottom:2rem}
+.reading-body p{font-size:1rem;color:var(--mid);line-height:1.95;margin-bottom:1.5rem;font-weight:300}
+.reading-body p:last-child{margin-bottom:0}
+.reading-divider{width:40px;height:2px;background:var(--teal);margin:2rem 0}
+
+/* EMPTY STATE */
+.empty{text-align:center;padding:4rem;grid-column:span 2;color:var(--mid);font-size:.95rem}
+
+footer{background:#111120;padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center}
+footer p{font-size:.78rem;color:rgba(255,255,255,.3)}
+.footer-heart{color:var(--teal-mid)}
+
+@media(max-width:900px){
+  nav{padding:1rem 2rem}
+  .hero{padding:7rem 2rem 3rem}
+  .writings{grid-template-columns:1fr;padding:2rem 2rem 4rem}
+  .reading-modal{padding:2.5rem 1.5rem}
+  footer{flex-direction:column;gap:.5rem;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Elnaz Kanani</a>
+  <a class="nav-back" href="index.html">← Back home</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">My Corner</div>
+  <h1>Thoughts, lessons,<br><em>stories</em></h1>
+  <p>Unpolished, unscheduled, and entirely honest. Things I have learned at a price, observations from the journey, reflections on being human in a complicated world. Filter by what you need today.</p>
+  <div class="filters">
+    <button class="filter-btn active" onclick="filter('all', this)">All</button>
+    <button class="filter-btn" onclick="filter('Lessons at a Price', this)">Lessons at a Price</button>
+    <button class="filter-btn" onclick="filter('Notes from the Journey', this)">Notes from the Journey</button>
+    <button class="filter-btn" onclick="filter('The AI Diaries', this)">The AI Diaries</button>
+    <button class="filter-btn" onclick="filter('Things I Know Now', this)">Things I Know Now</button>
+    <button class="filter-btn" onclick="filter('On Being Human', this)">On Being Human</button>
+  </div>
+</section>
+
+<div class="writings" id="writings-grid"></div>
+
+<!-- READING MODAL -->
+<div class="reading-overlay" id="reading-overlay" onclick="closeReading(event)">
+  <div class="reading-modal" id="reading-modal">
+    <button class="reading-close" onclick="closeReadingBtn()">✕</button>
+    <div class="reading-tag" id="reading-tag"></div>
+    <h2 class="reading-title" id="reading-title"></h2>
+    <div class="reading-divider"></div>
+    <div class="reading-body" id="reading-body"></div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Elnaz Kanani · Ottawa, Canada</p>
+  <p>Made with <span class="footer-heart">♥</span> for this country and its people</p>
+</footer>
+
+<script>
+const writings = [
+  {
+    id:1, title:"The One-Year Test", tag:"Lessons at a Price",
+    excerpt:"Marcus Aurelius asked us to zoom out. I learned to ask one simple question in moments of crisis — and it changed everything about how I handle pain.",
+    body:[
+      "Marcus Aurelius wrote in his Meditations: 'You have power over your mind, not outside events. Realize this, and you will find strength.' I came to understand this not through reading — though I had read those words many times — but through a moment of genuine crisis, when everything I had worked for felt like it was collapsing at once. I was sitting with the weight of it, convinced it was catastrophic, when a quiet thought arrived: will this matter in a year?",
+      "It sounds almost insultingly simple. But sit with it honestly and it becomes a kind of compass. If the answer is yes — if in twelve months this will still be shaping your life — then by all means feel it fully. Cry if you need to. Grieve it properly. It deserves that. But if the answer is no — and I have found, more often than I expected, that the answer is no — then you are paying a very high price for something that will not remember you paid it.",
+      "I am not saying pain is not real. I am saying that most of our pain has an expiry date we refuse to read. The Stoics called this the view from above — zooming out until the thing that consumed you this morning looks, from sufficient distance, like what it actually is. Not nothing. But not everything either. Try the test. You might surprise yourself."
+    ]
+  },
+  {
+    id:2, title:"Put Down What Is Not Yours to Carry", tag:"Things I Know Now",
+    excerpt:"Rumi knew that letting go is not weakness — it is the hardest and most necessary act of will most of us will ever attempt.",
+    body:[
+      "Rumi wrote: 'Life is a balance of holding on and letting go.' I used to think letting go was a form of weakness — that carrying pain proved I took things seriously, that holding onto hurt was a kind of loyalty to my own experience. It took me years to understand that this is exactly backwards. Holding on is easy. It is passive. Letting go requires an act of will that most people never attempt.",
+      "There is a particular kind of pain we rehearse. We replay the conversation, relitigate the decision, reimagine the outcome. We become very skilled at keeping wounds open. And the strange thing is — the wound starts to feel like identity. Like if we let it heal, we lose something true about ourselves. We don't. We just lose the pain. And that, it turns out, is allowed.",
+      "What helped me was learning to ask: is this mine to carry? Some things are. Loss, grief, love — these are worth carrying because they are real and heavy and human. But the small slights, the imagined failures, the opinions of people who will not be at your deathbed — these are not yours. Put them down. Walk away lighter. The road ahead is long and you will need the energy."
+    ]
+  },
+  {
+    id:3, title:"The People Who Make You Want to Stay", tag:"Notes from the Journey",
+    excerpt:"There was a time I could not find a reason to keep going. What brought me back was not a revelation — it was faces. People I loved. And the understanding that I owed it to them to stay.",
+    body:[
+      "There was a time — I will not dress it up — when I could not find a reason to keep going. I was far from home, in a country I was still learning to belong to, in a season where the darkness inside felt heavier than the darkness outside. I want to be honest about this because I know someone reading this may be in that place right now, and I do not want them to feel alone in it.",
+      "What pulled me back was not a grand revelation. It was faces. The people I loved — the chosen family I had slowly, quietly built in this new country — appeared in my mind one by one. And I understood, with a clarity I had not expected, that I owed it to them to stay. Not out of obligation. Out of love. Their lives were better with me in them. And mine was immeasurably better with them in mine. I got the help I needed. That decision — to reach out, to not face it alone — changed everything.",
+      "Saint-Exupéry wrote in The Little Prince: 'It is the time you have wasted for your rose that makes your rose so important.' The people who matter to you have spent their time on you. That is not nothing. That is everything. If you are struggling today, please — tell someone. The help exists. You deserve it. And there are people whose lives are quietly shaped by the fact that you are in them."
+    ]
+  },
+  {
+    id:4, title:"What the Canal Taught Me About Seasons", tag:"Notes from the Journey",
+    excerpt:"When I first saw Canadians skating to work on the Rideau Canal, I thought they were slightly mad. Now I think they might be the wisest people I know.",
+    body:[
+      "Every January in Ottawa, something remarkable happens. Thousands of people lace up their skates and glide to work on the Rideau Canal — the longest naturally frozen skating rink in the world. When I first saw this, newly arrived from a country where winter was something to survive rather than celebrate, I thought Canadians must be slightly mad. Now I think they might be the wisest people I know.",
+      "Canada taught me that every season has a gift hidden inside it, but only if you are willing to meet it on its own terms. Winter, brutal and beautiful, teaches endurance and the particular joy of warmth earned rather than assumed. Spring, brief and almost violent in its arrival, teaches you not to take beginnings for granted. Summer — long, golden, generous — teaches you what it feels like to exhale. And autumn. Autumn in Ottawa is almost unreasonably beautiful. The canal path turns to fire. The whole city seems lit from within.",
+      "Marcus Aurelius wrote: 'Confine yourself to the present.' I try to live that way through each Ottawa season — not waiting for the next one, not mourning the last. This city, this country, gave me that. The ability to be exactly where I am. I arrived lost. The seasons showed me how to be found."
+    ]
+  },
+  {
+    id:5, title:"On Being Indebted — and What to Do About It", tag:"Lessons at a Price",
+    excerpt:"A scholarship brought me to Canada. What I felt was not just gratitude — it was responsibility. And I have spent every year since trying to understand what that means.",
+    body:[
+      "When I received the scholarship that brought me to Canada, something shifted in me that I have never been able to fully name. It was not quite gratitude, though it was that too. It was closer to responsibility. The feeling that a door had been opened that I had not earned alone — that someone, some institution, some country had bet on me — and that the only honest response was to spend the rest of my life being worth that bet.",
+      "I have met people who carry their debts as burdens. Who feel the weight of what was given to them as a kind of shame — as if needing help was a flaw rather than a human condition. I understand that feeling. But I have come to see it differently. In Hôtel des Deux Mondes, Schmitt writes about souls suspended between worlds, trying to understand what their lives have meant. I think about that often. What will mine have meant? The answer I keep arriving at is: that I took what was given and gave it forward.",
+      "You do not repay a debt like this to the person who gave it. You repay it to the next person who needs a door opened. That is how it was always meant to work. The scholarship was not mine to keep. It was mine to pass on — through teaching, through mentoring, through showing up for people who are where I once was. That is the only accounting that makes sense to me."
+    ]
+  },
+  {
+    id:6, title:"The Obstacle Is the Lesson", tag:"Lessons at a Price",
+    excerpt:"Marcus Aurelius said the obstacle becomes the way. I read it and thought: this is either profound or nonsense. It took years to know which.",
+    body:[
+      "Marcus Aurelius had a formula I return to constantly: 'The impediment to action advances action. What stands in the way becomes the way.' I first read this during a period when everything I was trying to build seemed to be resisting me — projects failing, doors closing, the gap between where I was and where I wanted to be feeling embarrassingly wide. I read it and thought: this is either profound or it is nonsense. I was not yet sure which.",
+      "It took time to understand that the obstacles were not interruptions to my education. They were my education. Every failure taught me something a success could not have. Every closed door redirected me somewhere I would not have thought to go. The mathematics of it eventually became clear: the path was never the straight line I had planned. It was the sum of every detour, every correction, every moment I had to find another way.",
+      "Rumi said: 'The wound is the place where the light enters you.' I think about this alongside Aurelius and they arrive at the same truth from different centuries. Do not waste your obstacles. Do not spend your detours wishing you were on the highway. Look carefully at what the difficulty is trying to teach you. It is usually the most important lesson on the syllabus — and the one you will remember longest."
+    ]
+  },
+  {
+    id:7, title:"What Animals Know That We Have Forgotten", tag:"On Being Human",
+    excerpt:"I have never met an animal holding a grudge. There is a lesson in that — and The Little Prince understood it better than most philosophers.",
+    body:[
+      "I have never met an animal holding a grudge. I have never seen a dog rehearsing yesterday's slight or a cat lying awake at 3am replaying a conversation that went wrong. Animals live with a completeness in the present moment that every philosophy I have ever read is essentially trying to teach humans to approximate. They do not need the teaching. They simply are.",
+      "I think this is why I love them so completely. They are the definition of innocence — not because they are simple, but because they have not learned to complicate the basic act of being alive. They receive love fully. They give it without calculation. They rest without guilt and play without self-consciousness. Every interaction with an animal is a small lesson in how to be a mammal correctly.",
+      "The Little Prince said: 'One sees clearly only with the heart. What is essential is invisible to the eye.' Animals seem to know this instinctively. They do not see your title or your salary or your reputation. They see you — exactly as you are, in exactly this moment. And they decide, based entirely on that, whether to trust you. I find that clarifying. I try to deserve it."
+    ]
+  },
+  {
+    id:8, title:"The Gap Between Knowing and Doing", tag:"The AI Diaries",
+    excerpt:"We have built AI systems that can pass medical exams and write poetry. What we have not built is a system that knows when to stop. That is not a technical problem.",
+    body:[
+      "One of the most persistent problems in artificial intelligence is not intelligence at all — it is wisdom. We have built systems that can pass medical exams, write poetry, solve equations that would take humans lifetimes. What we have not built — what I am not sure we know how to build — is a system that knows when not to act. That understands context. That can sit with ambiguity and resist the pressure to produce an answer when no good answer exists.",
+      "This is, of course, also a human problem. Marcus Aurelius spent considerable effort on the discipline of not-acting — on the idea that restraint is a form of strength, that the wisest response is sometimes silence, sometimes waiting, sometimes simply witnessing. We have not taught our machines this. We have taught them to optimize, to complete, to respond. We have not yet taught them to pause.",
+      "I think about this often as someone who builds AI systems for a living. The question I return to is not 'what can this do?' but 'what should this do?' — and more importantly, 'what should this refuse to do?' These are not technical questions. They are ethical ones. And the answers, I believe, will define not what AI is capable of, but what kind of civilization we decide to be."
+    ]
+  }
+];
+
+const tagColors = {
+  "Lessons at a Price": "tag-lessons",
+  "Notes from the Journey": "tag-journey",
+  "The AI Diaries": "tag-ai",
+  "Things I Know Now": "tag-know",
+  "On Being Human": "tag-human"
+};
+
+let currentFilter = 'all';
+
+function getTagClass(tag){ return tagColors[tag] || ''; }
+
+function renderCards(data){
+  const grid = document.getElementById('writings-grid');
+  if(data.length === 0){
+    grid.innerHTML = '<div class="empty">No writings in this category yet — check back soon.</div>';
+    return;
+  }
+  grid.innerHTML = data.map(w => `
+    <div class="writing-card" onclick="openReading(${w.id})">
+      <div class="writing-card-body">
+        <span class="writing-tag ${getTagClass(w.tag)}">${w.tag}</span>
+        <h2 class="writing-title">${w.title}</h2>
+        <p class="writing-excerpt">${w.excerpt}</p>
+      </div>
+      <div class="writing-card-footer">
+        <span class="writing-read">Read →</span>
+        <span class="writing-icon">✦</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filter(tag, btn){
+  currentFilter = tag;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const filtered = tag === 'all' ? writings : writings.filter(w => w.tag === tag);
+  renderCards(filtered);
+}
+
+function openReading(id){
+  const w = writings.find(x => x.id === id);
+  if(!w) return;
+  document.getElementById('reading-tag').textContent = w.tag;
+  document.getElementById('reading-tag').className = 'reading-tag ' + getTagClass(w.tag);
+  document.getElementById('reading-title').textContent = w.title;
+  document.getElementById('reading-body').innerHTML = w.body.map(p => `<p>${p}</p>`).join('');
+  document.getElementById('reading-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeReadingBtn(){
+  document.getElementById('reading-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeReading(e){
+  if(e.target === document.getElementById('reading-overlay')) closeReadingBtn();
+}
+
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeReadingBtn(); });
+
+renderCards(writings);
+</script>
+</body>
+</html>

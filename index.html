@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Elnaz Kanani — Home</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -24,6 +24,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:8rem 4rem 4rem;gap:4rem;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;top:-20%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(10,107,94,.06) 0%,transparent 70%);border-radius:50%;pointer-events:none}
 .hero-text{position:relative;z-index:2}
+.hero-name-meanings{margin-bottom:2rem;display:flex;flex-direction:column;gap:.75rem}
+.name-line{display:flex;align-items:baseline;gap:.85rem}
+.farsi{font-family:'Noto Nastaliq Urdu',serif;font-size:1.8rem;font-weight:400;color:var(--teal);direction:rtl;line-height:2;flex-shrink:0}
+.name-detail{display:flex;flex-direction:column;gap:.15rem}
+.name-desc{font-size:.82rem;color:var(--mid);line-height:1.5}
+.name-etymology{font-size:.72rem;color:var(--teal-mid);letter-spacing:.02em;font-style:italic}
+.name-desc strong{color:var(--dark);font-weight:500}
 .hero-eyebrow{font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);font-weight:500;margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem}
 .hero-eyebrow::before{content:'';display:block;width:32px;height:1px;background:var(--teal)}
 .hero-name{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5vw,5rem);font-weight:300;line-height:1.05;color:var(--dark);margin-bottom:1.5rem}
@@ -208,6 +215,7 @@ footer p{font-size:.78rem;color:rgba(255,255,255,.3)}
     <li><a href="#about">About</a></li>
     <li><a href="#affirmation">Affirmation</a></li>
     <li><a href="#about">My Recommendations</a></li>
+    <li><a href="my_corner.html" onclick="window.location.href='my_corner.html';return false;">My Corner</a></li>
     <li><a href="#wellbeing">Wellbeing</a></li>
     <li><a href="#contact">Say Hello</a></li>
     <li><a href="#ai-idea" style="background:var(--teal);color:white;padding:.4rem 1rem;border-radius:2px;letter-spacing:.05em">Share an AI Idea</a></li>
@@ -219,13 +227,29 @@ footer p{font-size:.78rem;color:rgba(255,255,255,.3)}
   <div class="hero-text">
     <div class="hero-eyebrow">Ottawa, Canada</div>
     <h1 class="hero-name">Elnaz<br><em>Kanani</em></h1>
+    <div class="hero-name-meanings">
+      <div class="name-line">
+        <span class="farsi">الناز</span>
+        <div class="name-detail">
+          <span class="name-desc"><strong>Elnaz</strong> — "Beloved of the people"</span>
+          <span class="name-etymology">el (tribe/people) + nāz (grace, charm)</span>
+        </div>
+      </div>
+      <div class="name-line">
+        <span class="farsi">طنّاز</span>
+        <div class="name-detail">
+          <span class="name-desc"><strong>Tanaz</strong> (nickname) — "Playfully charming, witty and vivacious"</span>
+          <span class="name-etymology">ṭanāz — a word for one with a light, spirited charm</span>
+        </div>
+      </div>
+    </div>
     <p class="hero-tagline">AI geek. Mathematician at heart. Lifelong learner. Lover of books, animals, and the quiet magic of a good idea. Proud Canadian by choice.</p>
     <a class="hero-cta" href="#contact">Say hello ↓</a>
   </div>
   <div class="hero-visual">
     <div class="hero-quote">
-      <blockquote>"Canada didn't just give me an education. It gave me a home, a purpose, and a chosen family."</blockquote>
-      <cite>— Elnaz, on arriving in Montreal alone in 2010</cite>
+      <blockquote>"Some people are born into their home. I had to travel across the world to find mine. Worth every kilometre."</blockquote>
+      <p style="font-size:.85rem;color:var(--mid);margin-top:.75rem;line-height:1.7;font-style:normal;">The hardest journeys teach you that home is not a place you come from — it is a place you choose, and that chooses you back. Belonging, I have learned, is not given. It is built, slowly, out of shared winters and chosen people and the quiet decision to stay.</p>
     </div>
     <div class="hero-pills">
       <span class="pill">AI & Machine Learning</span>
@@ -314,7 +338,7 @@ footer p{font-size:.78rem;color:rgba(255,255,255,.3)}
     <div class="interest-card">
       <div class="interest-icon">🎓</div>
       <h3 class="interest-title">Schools & Learning</h3>
-      <p class="interest-desc">I believe investing in schools and universities is the single most important thing we can do for our future. I also believe the gap between academia and industry must close — urgently. Knowledge without application stalls. Practice without theory drifts. I give back in every way I can: teaching, research, mentorship, and showing up wherever both worlds can meet.</p>
+      <p class="interest-desc">School didn't just educate me — it saved me. When I arrived in Canada alone and lost, it was the structure of academia and the discipline of learning that gave me purpose and a reason to stay focused on something larger than my circumstances. Education is not just a transfer of knowledge — it is a way of life. It teaches you how to think, how to question, how to persist through difficulty. I believe investing in schools and universities is one of the most powerful things a society can do. I give back in every form I can: teaching, research, and mentorship.</p>
     </div>
     <div class="interest-card">
       <div class="interest-icon">🍁</div>
@@ -600,10 +624,24 @@ const animals = [
   {url:'https://images.unsplash.com/photo-1589656966895-2f33e7653819?w=700&auto=format&fit=crop',cap:'A polar bear cub experiencing snow for the very first time.'},
   {url:'https://images.unsplash.com/photo-1474511320723-9a56873867b5?w=700&auto=format&fit=crop',cap:'Pure innocence. That\'s all.'},
 ];
-let animalIdx = 0;
-function initAnimals(){animalIdx=Math.floor(Math.random()*animals.length);setAnimal()}
-function nextAnimal(){animalIdx=(animalIdx+1)%animals.length;setAnimal()}
-function setAnimal(){const a=animals[animalIdx];document.getElementById('cute-img').src=a.url;document.getElementById('animal-caption').textContent=a.cap}
+function initAnimals(){shownAnimals=[];nextAnimal();}
+function nextAnimal(){
+  if(shownAnimals.length>=animals.length) shownAnimals=[];
+  const remaining=animals.filter((_,i)=>!shownAnimals.includes(i));
+  const idx=Math.floor(Math.random()*remaining.length);
+  const realIdx=animals.indexOf(remaining[idx]);
+  shownAnimals.push(realIdx);
+  setAnimal(realIdx);
+}
+function setAnimal(idx){
+  const img=document.getElementById('cute-img');
+  img.style.opacity='0';
+  img.onerror=function(){nextAnimal();};
+  img.onload=function(){img.style.opacity='1';};
+  img.style.transition='opacity 0.4s ease';
+  img.src=animals[idx].url;
+  document.getElementById('animal-caption').textContent=animals[idx].cap;
+}
 
 /* FORMS */
 async function handleSubmit(e){
